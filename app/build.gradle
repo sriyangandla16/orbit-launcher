@@ -1,0 +1,51 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.orbit.launcher'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.orbit.launcher'
+        minSdk 22          // Fire OS 5 (Fire TV Stick 2nd gen) is Android 5.1 = API 22
+        targetSdk 34
+        versionCode 1
+        versionName '0.1.0'
+    }
+
+    // A fixed test key, so every build (local or GitHub) can update the app in place.
+    // It is public on purpose. Swap it for a private key before giving builds to lots of people.
+    signingConfigs {
+        test {
+            storeFile file('orbit-test.keystore')
+            storePassword 'orbitlauncher'
+            keyAlias 'orbit'
+            keyPassword 'orbitlauncher'
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.test
+        }
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.test
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+}
+
+// No libraries: plain Java + the Android framework only, to keep the app tiny and fast.
+dependencies {
+}

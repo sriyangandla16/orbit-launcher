@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Dark blue-black background with a soft glow in the top-left corner. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="270"
+                android:endColor="#FF050608"
+                android:startColor="#FF0E1322"
+                android:type="linear" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:centerX="0.15"
+                android:centerY="0.05"
+                android:endColor="#000E1322"
+                android:gradientRadius="70%p"
+                android:startColor="#552B4C8C"
+                android:type="radial" />
+        </shape>
+    </item>
+</layer-list>
